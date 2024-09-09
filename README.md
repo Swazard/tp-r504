@@ -1,2 +1,2 @@
 # tp-r504
-RATIO KYLIAN
+Ceci est le répo git des tp en R504.
