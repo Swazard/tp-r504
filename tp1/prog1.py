@@ -1,4 +1,8 @@
+import fonctions as f
+
 print("Hello World!")
 while True:
-	a = input("Veuillez choisir un nombre : ")
-	print(int(a)**2)
+	a = input("Choisir deux nombres : ")
+	b = input()
+	res = f.puissance(int(a), int(b))
+	print(res)
