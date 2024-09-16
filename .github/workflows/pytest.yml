@@ -5,8 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Context
-      - run : echo ${{ github.ref }}
-      - run : echo ${{ github.env }}
+      - run : |
+         echo ${{ github.ref }}
+         echo ${{ github.env }}
       - uses: actions/checkout@v3
       - name: Set up Python for Demo
         uses: actions/setup-python@v4
