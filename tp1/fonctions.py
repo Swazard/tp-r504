@@ -13,4 +13,6 @@ def puissance(a, b):
     elif b < 0:
         return 1 / (puissance(a, abs(b)))
     if not type(var) is int:
-        raise TypeError("Only intergers are allowed")
+        raise TypeError("Only integers are allowed")
+    if not type(var) is float:
+        raise TypeError("Only integers are allowed")
