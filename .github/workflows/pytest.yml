@@ -6,7 +6,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Context
-        run: echo ${{ github.ref }}
+        run: "Nom branche : echo ${{ github.ref }}"
+        run: "OS : echo${{ github.env }}"
       - name: Set up Python for Demo
         uses: actions/setup-python@v4
       - name: Install dependencies
