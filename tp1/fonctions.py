@@ -6,6 +6,9 @@ def puissance(a, b):
     elif a == 0:
         print("On ne peut pas mettre 0 à la puissance avec un négatif")
     else:
-        return(a**b)
+        res = 1
+        for i in range(b):
+            res *= a
+        return res
     if not type(var) is int:
         raise TypeError("Only intergers are allowed")
