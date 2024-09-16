@@ -5,9 +5,9 @@ def puissance(a, b):
         print("On ne peut pas diviser par 0")
     elif a == 0:
         print("On ne peut pas mettre 0 à la puissance avec un négatif")
-    else:
+    elif b > 0:
         res = 1
-        for i in range(b):
+        for i in range(abs(b)):
             res *= a
         return res
     if not type(var) is int:
