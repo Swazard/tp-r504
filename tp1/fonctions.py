@@ -7,8 +7,10 @@ def puissance(a, b):
         print("On ne peut pas mettre 0 à la puissance avec un négatif")
     elif b > 0:
         res = 1
-        for i in range(abs(b)):
+        for i in range(b):
             res *= a
         return res
+    elif b < 0:
+        return 1 / (puissance(a, abs(b)))
     if not type(var) is int:
         raise TypeError("Only intergers are allowed")
