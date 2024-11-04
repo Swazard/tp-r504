@@ -14,14 +14,11 @@ public class ServeurTCP3
             DataInputStream dIn = new DataInputStream(socket.getInputStream());
             String msg = dIn.readUTF();
             System.out.println( "Message:" + msg);
-            socket.close();
 
             String rev = new StringBuilder(msg).reverse().toString();
-            System.out.println(rev);
-            Socket socket2 = new Socket("localhost", 2017);
-            DataOutputStream dOut = new DataOutputStream(socket2.getOutputStream());
+            DataOutputStream dOut = new DataOutputStream(socket.getOutputStream());
             dOut.writeUTF(rev);
-            socket2.close();
+            socket.close();
         }
 //        socketserver.close();
     }
