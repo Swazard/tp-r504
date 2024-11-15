@@ -1,6 +1,15 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+$script = <<-SCRIPT
+sudo mkdir /data/
+chmod 777 /data/
+chmod 777 /etc/nginx/
+sudo apt update
+sudo apt install nginx -y
+SCRIPT
+
+
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
@@ -67,4 +76,7 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
+  config.vm.provision "shell", inline: $script
+  config.vm.provision "file", source: "~/tp-r504/TP5/vag1/index.html", destination: "/data/index.html"
+  config.vm.provision "file", source: "~/tp-r504/TP5/vag1/nginx.conf", destination: "/etc/nginx/nginx.conf"
 end
