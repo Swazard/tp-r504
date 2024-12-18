@@ -1,11 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import mysql.connector
 
 app = Flask(__name__)
  
 # MySQL configuration
 db_config = {
-    'host': '172.22.0.2',
+    'host': 'tp4-sql',
     'user': 'root',
     'password': 'foo',
     'database': 'demosql',
@@ -29,6 +29,12 @@ def index():
     conn.close()
     
     return render_template('index.html', data=data)
+
+@app.route('/newuser', methods = ['POST', 'GET'])
+def saisie():
+    if request.method == 'POST':
+        res = request.form.get("regex")
+        return res.text()
 
 if __name__ == '__main__':
     app.run(debug=True)
