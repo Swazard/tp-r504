@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import mysql.connector
+import re
 
 app = Flask(__name__)
  
@@ -30,11 +31,34 @@ def index():
     
     return render_template('index.html', data=data)
 
+@app.route("/monFormulaire")
+def monForm():
+	return render_template("form.html")
+
 @app.route('/newuser', methods = ['POST', 'GET'])
-def saisie():
+def newuser():
     if request.method == 'POST':
         res = request.form.get("regex")
-        return res.text()
+
+        reg1 = ".{6,}"
+        reg2= ".*\d+.*"
+        reg3= ".*[a-z]+.*"
+        reg4= ".*[A-Z]+.*"
+        reg5= ".*((#)|(%)|(\{)|(\})|(@)).*"
+
+        if re.fullmatch(reg1, res) == None:
+            return("Mot de passe incorect, il faut au moins 6 caractères")
+        if re.fullmatch(reg2, res) == None:
+            return("Mot de passe incorect, il faut au moins un chiffre")
+        if re.fullmatch(reg3, res) == None:
+            return("Mot de passe incorect, il faut au moins une minuscule")
+        if re.fullmatch(reg4, res) == None:
+            return("Mot de passe incorect, il faut une majuscule")
+        if re.fullmatch(reg5, res) == None:
+            return("Mot de passe incorect, il faut au moins un de ces caractères #%{}@")
+        else:
+            return res
+        
 
 if __name__ == '__main__':
     app.run(debug=True)
