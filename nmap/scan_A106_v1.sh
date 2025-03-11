@@ -6,7 +6,7 @@ awk '{print $NF}' ip.txt > ip2.txt
 
 while read line;
 do
-    echo "$line,$(nmap -F $line | grep "/tcp" | grep open | wc -l)" >> scan-result_1.csv
+    echo "$line;$(nmap -F $line | grep "/tcp" | grep open | wc -l)" >> scan-result_1.csv
 done < ip2.txt
 
 rm *.txt
